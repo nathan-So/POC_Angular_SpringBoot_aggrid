@@ -1,6 +1,8 @@
 import { Injectable} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { TableModel } from '../table.model';
+// import { TableModel } from '../table.model';
+import { TableObject } from '../tableObject.model';
+
 //****
 // import { PostDataModel } from '../postData.model';
 //****
@@ -9,7 +11,7 @@ import { TableModel } from '../table.model';
 export class AddService  {
     constructor (private http : HttpClient) { };
     
-    postProject(newProject : TableModel) {
+    postProject(newProject : TableObject) {
         let url = "http://localhost:8080/addproject";
         let header = {'Content-Type': 'application/json'};
 

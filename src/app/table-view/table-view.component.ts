@@ -45,10 +45,11 @@ export class TableViewComponent implements OnInit {
   dialogPlateform: string = "";
   // dialogTechnology: string = "";
   // ****
-  dialogTechnology: Array<string>;
+  // dialogTechnology: Array<string>;
+  dialogTechnology: string;
   // ****
   dialogClientProject: string = "";
-  newProject : TableModel;
+  newProject : TableObject;
   //****
   postData : PostDataModel;
   //****
@@ -141,12 +142,13 @@ export class TableViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      let tabletechno : Array<string> = [];
+      // let tabletechno : Array<string> = [];
 
       console.log('The dialog was closed');
       
-      tabletechno.push(result.dialogTechnology.toString())
-      this.newProject = new TableObject(result, tabletechno)
+      // tabletechno.push(result.dialogTechnology.toString())
+      // this.newProject = new TableObject(result, tabletechno)
+      this.newProject = new TableObject(result)
       
       console.log("afterClosed()_newProject",this.newProject);
   
@@ -181,9 +183,6 @@ export class TableViewComponent implements OnInit {
 // OU refresh la page juste après le send (methode angular)
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {this.router.navigate(['/']); });
     this.refresh();
-    this.refresh();
-    this.refresh();
-    this.refresh();
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {this.router.navigate(['/']); });
     // this.rowData = this.TableService.getTable()
     // console.log(this.rowData)
@@ -197,7 +196,7 @@ export class TableViewComponent implements OnInit {
   };
 
   refresh() { 
-    console.log("refreshing");
+    // console.log("refreshing");
     //   var params = {
     //     force: true,
     //     suppressFlash: true,

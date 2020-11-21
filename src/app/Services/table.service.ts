@@ -27,14 +27,14 @@ export class TableService {
                     table.push(new TableModel(res[i].projectCode,res[i].date,res[i].plateform,res[i].name,tableTech,res[i].clientProject))
                 }
                 this.rowData = table;
-                console.log("inThen()_in_promise",this.rowData)
+                // console.log("inThen()_in_promise",this.rowData)
                 return this.rowData;
                }
               );
  
-              console.log("in_promise",this.rowData)
+            //   console.log("in_promise",this.rowData)
           });
-          console.log("out_of_promise",this.rowData)
+        //   console.log("out_of_promise",this.rowData)
         return this.rowData;
         };
         // mettre un flag pour verifier que ca a ete déjà telecharger ???? C'est quoi ça déjà ????
