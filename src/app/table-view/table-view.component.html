@@ -1,0 +1,103 @@
+<button #myDiv (click)="refresh()">refresh data</button>
+<div style="height: 100vh;">
+
+  <mat-toolbar class="header">
+      <img class="logo-cap-left" src="https://raw.githubusercontent.com/nathan-So/demo_fichier_json/master/cap-logo.jpg"/>
+      <p> {{ TITLE }}</p>
+    </mat-toolbar>
+
+  <mat-toolbar color="primary">
+    <!-- <span>AngularXAg-grid</span> <span class="example-spacer"></span> -->
+    <div fxShow="true" fxHide.lt-md="true">
+      <span>Options :</span>  
+      <button mat-stroked-button routerLink="auth" mat-button>Authentification</button>
+      <button mat-stroked-button (click)="openDialog()">Ajouter un projet</button>
+      <button mat-stroked-button (click)="hideModel()" *ngIf="hide === false">Cacher l'ID et la Date</button>
+      <button mat-stroked-button (click)="showModel()" *ngIf= "hide === true">Afficher l'ID et la Date</button>
+      <mat-form-field style="width:190px; height: 30px; margin-left: 20px; text-align: center;">
+        <!-- <mat-label>Language selectionné</mat-label> -->
+        <mat-select  [(ngModel)]="language" style="font-size:15px; height: 20px;"> 
+          <mat-option (click)="changeLanguage()" style="font-size:15px;"
+                      *ngFor="let language of translationService.languages" 
+                      [value]="language.language">{{language.language}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxShow="true" fxHide.gt-sm="true">
+      <a href="#" (click)="sidenav.toggle()" style="color:white">Afficher les options</a>
+    </div>
+  </mat-toolbar>
+
+  <mat-toolbar style="background-color: rgb(70, 114, 180);">
+    <div fxShow="true" fxHide.lt-md="true">
+      <br>
+      <!-- <span style="color:black; font-size: 15px;">Recherche :</span> -->
+      <div class="box">
+        <label class="label">{{names}}:</label>
+        <app-search-bar-cap (searchChanged)="handleChangeName($event)">NOM</app-search-bar-cap>
+        <label>{{projectCode}}:</label>
+        <app-search-bar-cap (searchChanged)="handleChangeProjectCode($event)">projectCode</app-search-bar-cap>
+        <label>{{date}}:</label>
+        <app-search-bar-cap (searchChanged)="handleChangeDate($event)">DATE</app-search-bar-cap>
+        <label>{{plateform}}:</label>
+        <app-search-bar-cap (searchChanged)="handleChangePlat($event)">PLAT</app-search-bar-cap>
+        <label>{{technologies}}:</label>
+        <app-search-bar-cap (searchChanged)="handleChangeTech($event)">TECH</app-search-bar-cap>
+        <label>{{clientProject}}:</label>
+        <app-search-bar-cap (searchChanged)="handleChangeProj($event)">PROJ</app-search-bar-cap>
+      </div>
+    </div>
+  </mat-toolbar>
+
+<mat-sidenav-container fxFlexFill class="example-container">
+  <mat-sidenav #sidenav fxLayout="column">
+    <div fxLayout="column">
+      <a (click)="sidenav.toggle()" href="#" mat-button>Fermer</a>
+      <a href="#" mat-button (click)="getSelectedRows()">Afficher les lignes selectionnées</a>
+      <a href="#" mat-button (click)="hideModel()" *ngIf="hide === false">Cacher l'ID et la Date</a>
+      <a href="#" mat-button (click)="showModel()" *ngIf= "hide === true">Afficher l'ID et la Date</a>
+      <mat-form-field>
+        <!-- <mat-label>Language selectionné</mat-label> -->
+        <mat-select [(ngModel)]="language" style=" text-align: center;">
+          <mat-option (click)="changeLanguage()" 
+                      *ngFor="let language of translationService.languages" 
+                      [value]="language.language">{{language.language}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="box">
+        <label style="color:black ;">{{names}}:</label>
+        <app-search-bar-cap (searchChanged)="handleChangeName($event)">NOM</app-search-bar-cap>
+        <label style="color:black ;">{{id}}:</label>
+        <app-search-bar-cap (searchChanged)="handleChangeId($event)">ID</app-search-bar-cap>
+        <label style="color:black ;">{{date}}:</label>
+        <app-search-bar-cap (searchChanged)="handleChangeDate($event)">DATE</app-search-bar-cap>
+        <label style="color:black ;">{{plateform}}:</label>
+        <app-search-bar-cap (searchChanged)="handleChangePlat($event)">PLAT</app-search-bar-cap>
+        <label style="color:black ;">{{technologies}}:</label>
+        <app-search-bar-cap (searchChanged)="handleChangeTech($event)">TECH</app-search-bar-cap>
+        <label style="color:black ;">{{clientProject}}:</label>
+        <app-search-bar-cap (searchChanged)="handleChangeProj($event)">PROJ</app-search-bar-cap>
+      </div>
+    </div>
+  </mat-sidenav>  
+<mat-sidenav-content>
+
+      <div id="center">
+              <ag-grid-angular  #agGrid
+                                id="myGrid"
+                                style="width: 100%; height:500px"
+                                class="ag-theme-balham-dark"
+                                [groupSelectsChildren]=true
+                                [autoGroupColumnDef]="autoGroupColumnDef"
+                                [rowData]="rowDataArrayFiltered"
+                                [columnDefs]="columnDefs"
+                                [defaultColDef]="defaultColDef"
+                                rowSelection="multiple"
+                                [gridOptions]="gridOptions"
+                                (gridReady)="onGridReady($event)"
+                                [enableCellChangeFlash]="true"></ag-grid-angular>
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+</div>
+<!-- (gridReady)="onGridReady($event)" -->

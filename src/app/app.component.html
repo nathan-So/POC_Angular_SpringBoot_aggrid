@@ -1,16 +1,74 @@
-<button (click)="getSelectedRows()">Afficher les lignes selectionnées</button>
-<button (click)="Resize()">Resize les colonnes</button>
-<button (click)="HideModel()" *ngIf="hide === false">Cacher l'ID et la Date</button>
-<button (click)="ShowModel()" *ngIf= "hide === true">Afficher l'ID et la Date</button>
+<router-outlet></router-outlet>
 
-<ag-grid-angular
+
+<!-- <div class="box">
+<button mat-stroked-button color="primary" (click)="getSelectedRows()">Afficher les lignes selectionnées</button>
+<button mat-stroked-button color="primary" (click)="hideModel()" *ngIf="hide === false">Cacher l'ID et la Date</button>
+<button mat-stroked-button color="primary" (click)="showModel()" *ngIf= "hide === true">Afficher l'ID et la Date</button>
+<button mat-stroked-button color="primary" (click)="changeLanguage()">Traduire</button>
+<button mat-stroked-button color="primary" (click)="testFunction()">Test</button>
+
+<mat-form-field appearance="fill">
+  <mat-label>Language selectionné</mat-label>
+  <mat-select [(ngModel)]="language">
+    <mat-option (click)="changeLanguage()" 
+                *ngFor="let language of translationService.languages" 
+                [value]="language.language">{{language.language}}</mat-option>
+  </mat-select>
+</mat-form-field>
+</div> -->
+
+<!-- <mat-select [(ngModel)]="language" (click)="changeLanguage()">
+  <mat-option *ngFor="let language of translationService.languages">{{language}}</mat-option>
+</mat-select>
+</div> -->
+
+
+<!-- 
+<div class="container">
+  <div id="center">
+          <ag-grid-angular  #agGrid
+                            id="myGrid"
+                            style="width: 1500px; height:500px"
+                            class="ag-theme-balham-dark"
+                            [groupSelectsChildren]=true
+                            [autoGroupColumnDef]="autoGroupColumnDef"
+                            [rowData]="rowDataArrayFiltered"
+                            [columnDefs]="columnDefs"
+                            [defaultColDef]="defaultColDef"
+                            rowSelection="multiple"
+                            (gridReady)="onGridReady($event)"></ag-grid-angular>
+  </div>
+</div> -->
+
+
+
+
+  
+
+
+
+
+<!-- <div class="body">
+<h1>{{language}}</h1>
+<h1>Démo : {{plateform_web_mobile}}</h1>
+</div> -->
+
+<!-- <select [(ngModel)]="translationService.language">
+  <option *ngFor="let language of translationService.languages">{{language}}</option>
+</select> -->
+  
+<!-- <ag-grid-angular
   #agGrid
   style="width: 1500px; height:500px"
   class="ag-theme-alpine"
-  [groupSelectsChildren]=true
-  [autoGroupColumnDef]="autoGroupColumnDef"
   [rowData]="rowData  | async"
-  [columnDefs]="columnDefs"
-  [defaultColDef]="defaultColDef"
   rowSelection="multiple"
-  ></ag-grid-angular>
+  (gridReady)="onGridReady($event)"
+  >
+  <ag-grid-column [headerName]="'ID' | translate" field="id" ></ag-grid-column>
+  <ag-grid-column headerName="Date" field="date" ></ag-grid-column>
+  <ag-grid-column [headerName]="'Plateforme (web ou mobile)' | translate" field="plateforme" ></ag-grid-column>
+  <ag-grid-column headerName="Technologies" field="technologies" ></ag-grid-column>
+  <ag-grid-column [headerName]="'Projet client (oui ou non)' | translate" field="projet_client" ></ag-grid-column>
+</ag-grid-angular> -->

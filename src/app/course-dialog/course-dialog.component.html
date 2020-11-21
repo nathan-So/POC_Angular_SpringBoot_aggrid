@@ -1,0 +1,104 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+
+    <h2 mat-dialog-title>Ajouter un projet</h2>
+    <mat-dialog-content>
+        <mat-form-field>
+            <input matInput 
+                    formControlName="dialogName"
+                    [(ngModel)]="data.dialogName"
+                    placeholder="Nom du projet ?">
+                    <div *ngIf="this.userForm.controls.dialogName.touched && this.userForm.controls.dialogName.invalid" class="alert alert-danger">
+                        <div *ngIf="f.dialogName.errors.required">Texte requis!</div>
+                        <div *ngIf="f.dialogName.errors.pattern">Texte uniquement!</div>
+                    </div>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput 
+                    formControlName="dialogProjectCode"
+                    [(ngModel)]="data.dialogProjectCode"
+                    placeholder="Code client du projet ?">
+                    <div *ngIf="f.dialogProjectCode.touched && f.dialogProjectCode.invalid" class="alert alert-danger">
+                        <div *ngIf="f.dialogProjectCode.errors.required">Nombres requis!</div>
+                        <div *ngIf="f.dialogProjectCode.errors.pattern">Nombres uniquements!</div>
+                    </div>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput 
+                    formControlName="dialogDate"
+                    [(ngModel)]="data.dialogDate"
+                    placeholder="Année du projet ?">
+                    <div *ngIf="f.dialogDate.touched && f.dialogDate.invalid" class="alert alert-danger">
+                        <div *ngIf="f.dialogDate.errors.required">Nombres requis!</div>
+                        <div *ngIf="f.dialogDate.errors.pattern">Texte uniquement!</div>
+                    </div>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput 
+                    formControlName="dialogPlateform"
+                    [(ngModel)]="data.dialogPlateform"
+                    placeholder="Projet web ou mobile ?">
+                    <div *ngIf="f.dialogPlateform.touched && f.dialogPlateform.invalid" class="alert alert-danger">
+                        <div *ngIf="f.dialogPlateform.errors.required">Texte requis!</div>
+                        <div *ngIf="f.dialogPlateform.errors.pattern">Texte uniquement!</div>
+                    </div>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput 
+                    formControlName="dialogTechnology"
+                    [(ngModel)]="data.dialogTechnology"
+                    placeholder="Technologie du projet ?">
+                    <div *ngIf="f.dialogTechnology.touched && f.dialogTechnology.invalid" class="alert alert-danger">
+                        <div *ngIf="f.dialogTechnology.errors.required">Texte requis!</div>
+                        <div *ngIf="f.dialogTechnology.errors.pattern">Texte uniquement!</div>
+                    </div>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput 
+                    formControlName="dialogClientProject"
+                    [(ngModel)]="data.dialogClientProject"
+                    placeholder="Projet client oui ou non ?">
+                    <div *ngIf="f.dialogTechnology.touched && f.dialogClientProject.invalid" class="alert alert-danger">
+                        <div *ngIf="f.dialogClientProject.errors.required">Texte requis!</div>
+                        <div *ngIf="f.dialogClientProject.errors.pattern">Texte uniquement!</div>
+                    </div>
+        </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+    <!-- <button mat-button type="submit" [disabled]="userForm.invalid">submit</button> -->
+    <button mat-button (click)="save()" [disabled]="userForm.invalid">save</button>
+    <button mat-button (click)="close()">no</button>
+    </mat-dialog-actions>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+<!-- <h2 mat-dialog-title>title</h2>
+
+<mat-dialog-content [formGroup] = "form">
+    <mat-form-field>
+        <input matInput 
+                placeholder="ID"
+                formControleName="écrire l'ID du projet ici">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput 
+                placeholder="Nom"
+                formControleName="écrire le nom du projet ici">
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button [mat-dialog-close]="data">yes</button>
+    <button class="mat-raised-button" (click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+</mat-dialog-actions> -->
