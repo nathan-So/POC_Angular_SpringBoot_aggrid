@@ -6,7 +6,7 @@ import { TableModel } from '../table.model';
 export class TableService {
     constructor(private http: HttpClient){};
 
-    public API : string = "http://localhost:8080/retrievedata";
+    public API : string = "http://pocangularspringbootaggrid-env.eba-q3bkvgyh.us-east-2.elasticbeanstalk.com/retrievedata";
     public rowData : any;
 
     getTable(){

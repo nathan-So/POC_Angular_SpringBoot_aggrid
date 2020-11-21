@@ -12,7 +12,7 @@ export class AddService  {
     constructor (private http : HttpClient) { };
     
     postProject(newProject : TableObject) {
-        let url = "http://localhost:8080/addproject";
+        let url = "http://pocangularspringbootaggrid-env.eba-q3bkvgyh.us-east-2.elasticbeanstalk.com/addproject";
         let header = {'Content-Type': 'application/json'};
 
         return this.http.post(url, JSON.stringify(newProject), {headers: header} );
